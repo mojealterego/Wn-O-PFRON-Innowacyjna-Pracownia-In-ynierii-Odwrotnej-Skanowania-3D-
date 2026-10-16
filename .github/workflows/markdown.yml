@@ -1,0 +1,16 @@
+name: Documentation checks
+on:
+  push:
+  pull_request:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check required documentation
+        shell: bash
+        run: |
+          test -s README.md
+          test -s ROADMAP.md
+          test -s docs/REQUIREMENTS.md
+          test -s docs/SOURCES.md
